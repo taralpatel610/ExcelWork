@@ -32,7 +32,7 @@ proguard/
 
 # Android Studio captures folder
 captures/
-ExcelWork/
+
 
 # IntelliJ
 *.iml
@@ -63,3 +63,6 @@ fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
 fastlane/readme.md
+
+#user defined
+ExcelWork/
