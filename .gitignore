@@ -12,7 +12,7 @@
 bin/
 gen/
 out/
-ExcelWork/
+
 
 # Gradle files
 .gradle/
@@ -32,6 +32,7 @@ proguard/
 
 # Android Studio captures folder
 captures/
+ExcelWork/
 
 # IntelliJ
 *.iml
