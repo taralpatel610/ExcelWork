@@ -1,7 +1,6 @@
 package com.sourcecode.excelwork;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -144,7 +143,7 @@ public class MainActivity extends Activity {
 			emailadd=readExcelFile(MainActivity.this,tv1.getText().toString());	
 			mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 	        mBuilder= new NotificationCompat.Builder(getApplicationContext())
-	        .setSmallIcon(R.drawable.ic_launcher)
+	        .setSmallIcon(R.mipmap.ic_launcher)
 	        .setContentTitle("Sending Emails")
 	        .setContentText("Sending in progress")
 	        .setAutoCancel(true);
