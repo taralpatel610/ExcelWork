@@ -1,6 +1,7 @@
 package com.sourcecode.excelwork;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,11 +11,11 @@ import java.util.StringTokenizer;
 import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 
+
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.poifs.filesystem.POIFSFileSystem;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
@@ -29,7 +30,6 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.support.v4.app.NotificationCompat;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -127,7 +127,7 @@ public class MainActivity extends Activity {
 	
 	public void onSend(View v) {
 		sender_email=et1.getText().toString();
-		sender = new GMailSender(sender_email,et2.getText().toString());
+		sender = new GMailSender("bhadojunk@gmail.com","bhado547");
 		StringBuilder contentBuilder = new StringBuilder();
 		try {
 		    BufferedReader in = new BufferedReader(new FileReader(tv2.getText().toString()));
@@ -189,8 +189,7 @@ public class MainActivity extends Activity {
                     	StringTokenizer st2 = new StringTokenizer(params[0], ",");
             			
             			while (st2.hasMoreElements()) {
-                            Log.d("email address",st2.nextElement().toString());
-            				sender.sendMail("Source Code Info Tech Pvt. Ltd. Invitation to Free download Study Material, Final year Projects and Research-Review Papers for Student", params[1],
+                             		sender.sendMail("Source Code Info Tech Pvt. Ltd. Invitation to Free download Study Material, Final year Projects and Research-Review Papers for Student", params[1],
                                     sender_email,st2.nextElement().toString());	
             				count++;
             				publishProgress(Math.min((int)((float)(100*count)/900), 100));
@@ -217,9 +216,8 @@ public class MainActivity extends Activity {
              }
 
              try{
-                 FileInputStream myInput = new FileInputStream(filename);
-                 POIFSFileSystem myFileSystem = new POIFSFileSystem(myInput);
-                 HSSFWorkbook myWorkBook = new HSSFWorkbook(myFileSystem);
+				 FileInputStream fp = new FileInputStream(filename);
+                 HSSFWorkbook myWorkBook = new HSSFWorkbook(fp);
                  HSSFSheet mySheet = myWorkBook.getSheetAt(0);
                  Iterator<Row> rowIter = mySheet.rowIterator();
                 
@@ -236,9 +234,9 @@ public class MainActivity extends Activity {
                 		 		HSSFCell myCell = (HSSFCell) cellIter.next();
                 		 		emailadd+=myCell.toString()+",";
 							}
-                	 }
+						                 	 }
                 }
-             }catch (Exception e){e.printStackTrace(); }
+	             }catch (Exception e){e.printStackTrace(); }
 
              return emailadd;
          }
